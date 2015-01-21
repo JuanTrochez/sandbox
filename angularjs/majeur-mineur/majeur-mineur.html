@@ -13,19 +13,6 @@
         <div>
     </div>
 
-
-    <script>
-    var myApp = angular.module('myApp',[]);
-
-    myApp.controller("getAgeCtrl", function($scope){
-        $scope.age = 0;
-        $scope.sayStatut = function(){
-            if($scope.age < 18){
-                return "mineur";
-            }else{
-                return "majeur";
-            }
-        };
-    });
-    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </body>
