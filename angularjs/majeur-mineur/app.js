@@ -6,9 +6,9 @@
         $scope.sayStatus = function() {
             if ($scope.age < 18) {
                 return "mineur";
-            } else {
-                return "majeur";
             }
+            
+            return "majeur";
         };
     }]);
 })();
