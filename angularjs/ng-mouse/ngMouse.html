@@ -8,8 +8,16 @@
 <body>
 	<div ng-app="myApp">
 		<div ng-controller="ExampleCtrl">
-		Cliquez ou passez sur le bouton pour incrémenter les valeurs : <br/>
-		<button ng-mousedown="onDown()" ng-mouseenter="onEnter()" ng-mouseleave="onLeave()" ng-mousemove="onMove()" ng-mouseover="onOver()" ng-mouseup="onUp()">Bouton</button><br/>
+			Cliquez ou passez sur le bouton pour incrémenter les valeurs : <br/>
+			<button 
+				ng-mousedown="onDown()" 
+				ng-mouseenter="onEnter()" 
+				ng-mouseleave="onLeave()" 
+				ng-mousemove="onMove()" 
+				ng-mouseover="onOver()" 
+				ng-mouseup="onUp()">
+				Bouton
+			</button><br/>
 			Compteurs :<br/>
 			Down : {{ down }}<br/>
 			Enter : {{ enter }}<br/>
