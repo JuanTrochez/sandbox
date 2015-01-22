@@ -17,5 +17,11 @@
 		$scope.onUp = function() {
 			$scope.up++;
 		};
+
+		$scope.reset = function() {
+			$scope.down = 0;
+			$scope.press = 0;
+			$scope.up = 0;
+		};
 	}]);
 })();
