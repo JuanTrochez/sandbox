@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ng Cloak</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div ng-app="">
+		<div ng-cloak>
+			<span>{{ "ngCloak actif ici" }}</span><br/>
+			<span>{{ "Et là !" }}</span>
+		</div>
+		<div>
+			<span>{{ "ngCloak non actif ici" }}</span>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

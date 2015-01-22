@@ -2,15 +2,15 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Changez le texte !</title>
+	<title>Incrementez</title>
 </head>
 
 <body>
 	<div ng-app="myApp">
-		<div ng-controller="bindTestCtrl">
-			<input type="text" ng-model="myText"/><br/>
-			<span>Texte entré : <b ng-bind="myText"></b></span>
-		</div>
+		<div ng-controller="ExampleCtrl">
+			<button ng-click="increment()">Cliquez pour incrémenter</button>
+			<span ng-cloak>Votre compteur : <b ng-bind="counter"></b></span>
+		<div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>

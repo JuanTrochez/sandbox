@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Desactivez le bouton !</title>
+</head>
+
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="ExampleCtrl">
+			Cochez pour désactiver le bouton de la page <input type="checkbox" ng-model="disable"><br/>
+			<button ng-disabled="disable">Bouton</button><br/>
+			<button>Non desactivé</button>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
