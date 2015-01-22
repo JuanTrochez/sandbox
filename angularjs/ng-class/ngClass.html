@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Changez la forme</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div ng-app="myApp">
+		<p>
+			<input type="checkbox" ng-model="error"> Rouge<br/>
+			<input type="checkbox" ng-model="important"> Gras<br/>
+			<input type="checkbox" ng-model="back"> Fond gris<br/>
+			<span ng-class="{red: error, bold: important, backGrey: back}">Ma phrase à tester</span>
+		</p>
+		<p ng-controller="ExampleCtrl">
+			Entrez un ou plusieurs styles : (bold, red, backGrey)<br/>
+			<input type="text" ng-model="class"><br/>
+			<span ng-class="class">Ma phrase à tester</span>
+		</p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
