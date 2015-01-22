@@ -2,17 +2,18 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Majeur ou mineur</title>
+	<title>Changer le texte !</title>
 </head>
 
 <body>
 	<div ng-app="myApp">
-		<div ng-controller="getAgeCtrl">
-			<input ng-model="age"/>
-			<span>Vous êtes <b ng-bind="sayStatus()"></b></span>
-		<div>
+		<div ng-controller="bindTestCtrl">
+			<input type="text" ng-model="myText"/><br/>
+			<span>Texte entré : <b ng-bind="myText"></b></span>
+		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
 	<script src="app.js"></script>
 </body>
+</html>
