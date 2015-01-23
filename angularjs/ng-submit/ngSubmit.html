@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ng submit</title>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="ExampleCtrl">
+		<form ng-submit="onSubmit()">
+			Entrez un texte : 
+			<input type="text" ng-model="text">
+			<button type="submit">Envoyer</button><br/>
+			<span>Liste : {{ list }}</span>
+		</form>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
