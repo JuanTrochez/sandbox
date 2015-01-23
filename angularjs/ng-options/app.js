@@ -11,6 +11,5 @@
 			{name: "Bracelet", category: "Accessoires"}
 		];
 		$scope.cloth = $scope.clothes[0];
-		$scope.hauts = $scope.clothes["Hauts"];
 	}]);
 })();

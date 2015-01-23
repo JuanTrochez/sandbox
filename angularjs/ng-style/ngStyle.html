@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ng style</title>
+</head>
+
+<body>
+	<div ng-app="">
+		<button ng-click="style={color: 'blue'}">Bleu</button>
+		<button ng-click="style={color: 'black'}">Noir</button>
+		<button ng-click="style={'background-color': 'yellow'}">Fond jaune</button>
+		<button ng-click="style={'background-color': 'green'}">Fond vert</button><br/>
+		<span ng-style="style">Hello world!</span>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+</body>
+</html>
