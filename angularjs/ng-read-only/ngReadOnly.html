@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Activez le mode lecture !</title>
+</head>
+
+<body>
+	<div ng-app="">
+		Cochez pour activer le mode lecture du champ :
+		<input type="checkbox" ng-model="read"><br/>
+		<input type="text" ng-readonly="read" value="Lecture"><br/>
+		<input type="text" ng-readonly="read" value="Lecture"><br/>
+		<input type="text" value="Modifiable">
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+</body>
+</html>
