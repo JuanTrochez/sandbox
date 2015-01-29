@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ng model options, focus, blur</title>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="ExampleCtrl">
+		<form name="ExampleForm">
+			Nom : 
+			<input 
+				type="text" 
+				ng-model="user.name"
+				ng-model-options="{updateOn:'blur'}"
+				ng-focus="focus=true"
+				ng-blur="focus=false"
+				name="nom"><br/>
+			Informations : 
+			<input 
+				type="text" 
+				ng-model="user.data"
+				ng-model-options="{debounce:1000}"
+				ng-focus="focus=true"
+				ng-blur="focus=false" 
+				name="informations">
+		</form>
+		<span>Nom : {{user.name}}</span><br/>
+		<span>Informations : {{user.data}}</span><br/>
+		<span>Focus : {{ focus }}</span>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
