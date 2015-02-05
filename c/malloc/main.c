@@ -5,7 +5,7 @@
 
 int main(char **argv, int argc) {
 	printf("Hello world!\n");
-	char *name;
+	char *name = NULL;
 	for (int i = 0; i < 10000000000; i++) {
 		name = (char *) malloc(100000*sizeof(char));
 		strcpy(name, "coucou");
