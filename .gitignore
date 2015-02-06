@@ -10,6 +10,7 @@
 *.la
 *.dll
 *.lo
+*.lib
 stamp-*
 config.*
 libtool
@@ -28,6 +29,8 @@ depcomp
 install-sh
 missing
 m4
-
+Release*
+node_modules*
+build*
 conf13576*
 Edit.*
