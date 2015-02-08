@@ -1,7 +1,7 @@
 #include <nan.h>
 
 extern "C" {
-	void hello(char *name);
+	__declspec( dllimport ) void hello(char *name);
 }
 
 using namespace v8;
@@ -16,4 +16,4 @@ void Init(Handle<Object> exports) {
 	exports->Set(NanSymbol("hello"), FunctionTemplate::New(Method)->GetFunction());
 }
 
-NODE_MODULE(hello, Init)
+NODE_MODULE(hellomod, Init)

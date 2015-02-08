@@ -1,4 +1,6 @@
 #!/usr/bin/env node
-var addon = require('./hello/build/Release/hello.node');
+var addon = require('./hello/build/Release/hellomod.node');
 
-console.log(addon.hello());
+var str = addon.hello();
+console.log("\nstr = " + str);
+

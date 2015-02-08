@@ -1,13 +1,13 @@
 {
 	"targets": [
 		{
-			"target_name": "hello",
-			"sources": [ "hello.cc" ],
+			"target_name": "hellomod",
+			"sources": [ "hellomod.cc" ],
 			"include_dirs": [
 				"<!(node -e \"require('nan')\")"
 			],
 			"libraries": [
-				"C:\\juan\\repos\\sandbox\\node\\dll_module\\hello\\hello.dll2"
+				"C:\\jlouis\\repos\\juan\\sandbox\\node\\dll_module\\hello_lib\\hello.lib"
 			]
 		}
 	]

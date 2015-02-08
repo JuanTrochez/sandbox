@@ -1,0 +1,3 @@
+LIBRARY hello.dll
+EXPORTS
+hello
