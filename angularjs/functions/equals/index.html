@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>angular equals</title>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="ExampleCtrl">
+		Enter an argument : <input type="text" ng-model="arg1"><br/>
+		Enter an other argument : <input type="text" ng-model="arg2"><br/>
+		<button ng-click="isEqual()">Submit</button><br/>
+		Equals : {{ equal }}
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
