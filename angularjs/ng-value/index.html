@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ng value</title>
+</head>
+
+<body>
+	<div ng-app="myApp" ng-controller="ExampleCtrl">
+		<label ng-repeat="name in names">
+			<input type="radio" name="names" ng-model="selected.name" ng-value="name" id="{{name}}"> {{ name }}<br/>
+		</label>
+		<span>Name selected: {{ selected.name }}</span>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
