@@ -1,7 +1,7 @@
 (function() {
-	var app = angular.module("myApp", []);
+	var app = angular.module("mainApp", []);
 
-	app.controller("ExampleCtrl", ["$scope", function($scope) {
+	app.controller("MainCtrl", ["$scope", function($scope) {
 		$scope.names = ["Arthur", "Kate", "Jhon", "James", "Laura"];
 	}]);
 })();

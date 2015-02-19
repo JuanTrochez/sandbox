@@ -7,9 +7,10 @@
 
 <body>
 	<div ng-app="myApp" ng-controller="ExampleCtrl">
-		Type something: <input type="text" ng-model="myVar"><br/>
-		<button ng-click="definition(myVar)">Submit</button><br/>
-		Input: {{ state }}
+		Type something: <input type="text" ng-change="definition()" ng-model="myVar"><br/>
+		isUndefined: {{ isUndefined }}<br/>
+		isDefined: {{ isDefined }}<br/>
+		<button ng-click="reset()">Reset</button>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
