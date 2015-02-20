@@ -11,8 +11,10 @@
 </head>
 
 <body>
-	<my-include>xx</my-include>
-	<div my-include>yy</div>
+	<input ng-model="x" /><br/>
+	x: {{x}}<br/>
+	<my-include truc="a">xx</my-include>
+	<div my-include="'hello'" info="'coucou'" name="x">yy</div>
 	<div class="my-include">zz</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
