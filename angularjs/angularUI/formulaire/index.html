@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mon formulaire</title>
+	</head>
+
+	<body ng-app="mainApp" ng-controller="MainCtrl">
+		<div>
+			<form name="myForm" ng-submit="doSomething()" novalidate>
+				Nom : <input type="text" name="name" required />
+
+				<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
+			</form>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

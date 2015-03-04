@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>$templateCache test</title>
+	</head>
+
+	<body ng-app="mainApp" ng-controller="MainCtrl">
+		<div ng-include=" 'template.html' "></div>
+		template = {{template}}
+		<div ng-include=" 'templateId.html' "></div>
+		<div ng-include=" 'titi.html' "></div>
+		<div ng-include=" 'titi.html' "></div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script type="text/ng-template" id="titi.html">
+<h1>titi toto </h1>
+		</script>
+	</body>
+</html>
