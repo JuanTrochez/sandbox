@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>$scel</title>
+</head>
+
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="ExampleCtrl">
+			<input ng-model="myTextInput" type="text" size="100" /><br/>
+			<pre>
+{{myTextOutput}}
+			</pre>
+			<span ng-bind-html="myTextOutput"></span>
+			<script ng-bind="myJs"></script>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.3.9/angular-sanitize.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
