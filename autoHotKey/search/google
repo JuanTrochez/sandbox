@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+echo coucou "${@:-}"
+input=`echo "${@:-}"`
+"C:\\Program Files\\AutoHotkey\\autohotkey.exe" google.ahk \""$input"\"
+echo end
