@@ -18,8 +18,9 @@ wb := ComObjCreate("InternetExplorer.Application") ;create a IE instance
 wb.Visible := True
 wb.Navigate("Google.com")
 IELoad(wb)
-wb.Document.All.q.Value := "site:autohotkey.com tutorial"
-IELoad(wb)
+wb.Document.All.q.Value := "Hello Juan"
+MsgBox, Clicking
 wb.Document.All.btnK.click()
+ie.quit
 
 Return
