@@ -9,7 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class T1 {
+public class T1Test {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,7 +18,7 @@ public class T1 {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://change-this-to-the-site-you-are-testing/";
+    baseUrl = "http://google.com";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
