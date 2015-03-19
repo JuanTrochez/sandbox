@@ -46,3 +46,7 @@ ohter one
 more simple!
 )
 Return
+
+^#u::
+	Run ::{871C5380-42A0-1069-A2EA-08002B30309D}
+Return
