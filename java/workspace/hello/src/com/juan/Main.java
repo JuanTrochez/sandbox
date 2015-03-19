@@ -8,7 +8,6 @@ public class Main {
 		Greetings g = new Greetings();
 		
 		g.sayHello("juan");
-
 	}
 
 }
