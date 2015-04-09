@@ -1,0 +1,12 @@
+@media screen {
+	body {
+		background-color: red;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	body {
+		background-color: blue;
+	}
+}
+
