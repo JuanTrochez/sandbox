@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>Order By</title>
+</head>
+
+<body>
+	<div>
+		Sort by name : <input type="radio" ng-model="sort" value="name"><br/>
+		Sort by url : <input type="radio" ng-model="sort" value="url"><br/>
+		Reverse : <input type="checkbox" ng-model="reverse"><br/>
+		<table>
+			<tr>
+				<th style="width:150px">Name</th>
+				<th>Url</th>
+			</tr>
+			<tr ng-repeat="site in sites | orderBy:sort:reverse">
+				<td>{{ site.name }}	</td>
+				<td>{{ site.url }}</td>
+			</tr>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
