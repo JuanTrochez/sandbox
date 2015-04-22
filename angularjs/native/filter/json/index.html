@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>Json</title>
+</head>
+
+<body>
+	<div>
+		No filter : <br/>
+		{{ sites }}<br/><br/>
+		Json filter (5 spaces) :<br/>
+		<pre ng-repeat="site in sites">{{ site | json:5 }}</pre>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

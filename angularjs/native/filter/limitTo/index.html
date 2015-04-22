@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>Limit To</title>
+</head>
+
+<body>
+	<div>
+		{{num}}<br/>
+		Limit of array : <input type="number" ng-model="limit"><br/>
+		{{ num | limitTo:limit }}<br/><br/>
+
+		{{ number }}<br/>
+		Limit of number : <input type="number" ng-model="numLimit"><br/>
+		{{ number | limitTo:numLimit }}<br/><br/>
+
+		{{ string }}<br/>
+		Limit of string : <input type="string" ng-model="strLimit"><br/>
+		{{ string | limitTo:strLimit }}<br/>
+		
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
