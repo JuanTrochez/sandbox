@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>$cacheFactory</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.25/angular-csp.css" type="text/css">
+</head>
+
+<body ng-cloak>
+	<div>
+		Key: <input type="text" ng-model="key" />
+		Value: <input type="text" ng-model="value" />
+		<button ng-click="addCache()">Add to cache</button>
+		<div>Cache: </div>
+		<ul>
+			<li ng-repeat="key in keys">{{ key }}: {{ cache.get(key) }}</li>
+		</ul>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
