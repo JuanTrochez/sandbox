@@ -7,7 +7,7 @@
 
 <body>
 	<div ng-init="number = 26822747.56">
-		<input type="number" ng-model="number"><br/>		
+		<input type="number" ng-model="number"><br/>
 		Without filter : {{ number }}<br/>
 		With filter : {{ number  | number }}<br/>
 		Filter and fraction(3) : {{ number | number:3 }}<br/>
@@ -15,6 +15,6 @@
 		Filter, fraction(5) and negative : {{ -number | number:5 }}<br/>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
-	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_fr-fr.js"></script>
 </body>
 </html>
