@@ -3,15 +3,24 @@
 <head>
 	<meta charset="utf-8">
 	<title>$animate</title>
+	<style>
+.green {
+	background-color: green;
+}
+	</style>
 </head>
 
 <body>
 	<div>
-		<button id="remove" ng-click="remove()">Remove element</button><br/>
+		<button ng-click="remove()">Remove element</button><br/>
+		<button ng-click="moveElement()">Move element</button><br/>
+		<button ng-click="addGreen()">Add green</button><br/>
+		<button ng-click="removeGreen()">Remove green</button><br/>
 		<button ng-click="addElementOnParent()">Add element in the div</button>
 		<div id="parent"></div>
 		<button ng-click="addElementAfter()">Add element after me</button>
 		<div id="after"></div>
+		<div id="move"></div>
 
 
 	</div>
