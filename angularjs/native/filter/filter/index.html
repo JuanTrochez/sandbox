@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="mainApp" ng-controller="MainCtrl">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="mainApp" ng-controller="MainCtrl">
 <head>
 	<meta charset="utf-8">
 	<title>Filter</title>
@@ -13,7 +13,7 @@
 		Exact search : <input type="checkbox" ng-model="equal"><br/>
 		<table>
 			<tr>
-				<th style="width:150px">Name</th>
+				<th ng-style="{'width': '150px'}">Name</th>
 				<th>Url</th>
 			</tr>
 			<tr ng-repeat="site in sites | filter:search:equal">
