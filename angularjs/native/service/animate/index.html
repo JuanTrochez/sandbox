@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>$animate</title>
+</head>
+
+<body>
+	<div>
+		<button id="remove" ng-click="remove()">Remove element</button><br/>
+		<button ng-click="addElementOnParent()">Add element in the div</button>
+		<div id="parent"></div>
+		<button ng-click="addElementAfter()">Add element after me</button>
+		<div id="after"></div>
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
