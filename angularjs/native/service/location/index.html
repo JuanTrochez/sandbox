@@ -13,17 +13,17 @@
 
 <body>
 	<div>
-		<span ng-click="changeUrl('new')">Set new url</span> 
-		<span ng-click="changeUrl('hash')">Set new url + hash</span> 
-		<span ng-click="changeUrl('reset')">Reset</span><br/><br/>
-		AbsUrl = {{ locArray.absUrl }}<br/><br/>
-		url = {{ locArray.url }}<br/><br/>
-		protocol = {{ locArray.protocol }}<br/><br/>
-		host = {{ locArray.host }}<br/><br/>
-		port = {{ locArray.port }}<br/><br/>
-		path = {{ locArray.path }}<br/><br/>
-		search = {{ locArray.search }}<br/><br/>
-		hash = {{ locArray.hash }}<br/><br/>
+		<span ng-click="changeUrl('/foo?bar=baz')">Set new url</span>
+		<span ng-click="changeUrl('/foo?bar=baz#hash')">Set new url + hash</span>
+		<span ng-click="changeUrl('/')">Reset</span><br/><br/>
+		AbsUrl = {{ $location.absUrl() }}<br/><br/>
+		url = {{ $location.url() }}<br/><br/>
+		protocol = {{ $location.protocol() }}<br/><br/>
+		host = {{ $location.host() }}<br/><br/>
+		port = {{ $location.port() }}<br/><br/>
+		path = {{ $location.path() }}<br/><br/>
+		search = {{ $location.search() }}<br/><br/>
+		hash = {{ $location.hash() }}<br/><br/>
 		<!-- replace = {{ locArray.replace }}<br/><br/>
 		state = {{ locArray.state }}<br/><br/> -->
 	</div>
