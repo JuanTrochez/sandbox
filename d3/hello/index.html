@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hello World!</title>
+</head>
+
+<body>
+	<textarea id="ta" name="v"></textarea>
+	<button onclick="add();">Add</button>
+	<button onclick="r();">Remove</button>
+	<div id="hello">
+		<p>Hello World!</p>
+		<i>Hello World!</i>
+		<i>Hello World!</i>
+		<i>Hello World!</i><br/><br/>
+
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+		<b>Hello World!</b>
+	</div>
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+var a = d3.range(0, 100, 20);
+d3.select('textarea').text('15');
+function add() {
+	console.log('add');
+	var c = document.getElementById("ta").value;
+	console.log(c);
+	a.push(c);
+	console.log(a);
+	refresh();
+}
+function r() {
+	console.log('remove');
+	a.pop();
+	console.log(a);
+	refresh();
+}
+
+
+function refresh() {
+	var b = d3.select('#hello').selectAll('b').data(a);
+	var newB = b.enter()
+		.append('b')
+		.text('coucou');
+
+
+
+		b.style('font-size', function(d, i) {
+			return d + 'px';
+		});
+
+	b.exit().remove();
+}
+refresh();
+
+d3.selectAll('p').style('color', 'blue');
+
+d3.selectAll('i').style('color', function(d, i) {
+	return 'hsl(' + (i * 20) + ', 100%, 50%)';
+});
+
+
+	</script>
+</body>
+</html>
