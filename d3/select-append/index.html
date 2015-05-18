@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>D3 - select, append</title>
+</head>
+
+<body>
+	Set new Text : <input type="text" id="myText"> <button onclick="add();">set text</button>
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+var body = d3.select('body');
+
+var p = body.append('p')
+	.text('Text and tag "p" added with D3');
+
+function add() {
+	var newText = d3.select('#myText').property('value');
+	p.text(newText);
+}
+
+	</script>
+</body>
+</html>

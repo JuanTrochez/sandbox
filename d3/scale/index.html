@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>D3 - scale</title>
+</head>
+
+<body>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+var array = [5, 15, 25, 35, 45];
+var width = 1200;
+var height = 1000;
+
+
+
+var myWScale = d3.scale.linear()
+				.domain([0, 45])
+				.range([0, width]);
+
+var myCScale = d3.scale.linear()
+				.domain([0, 45])
+				.range(['red', 'blue']);
+
+var svg = d3.select('body').append('svg')
+			.attr('width', width)
+			.attr('height', height);
+
+
+var rect = svg.selectAll('rect')
+				.data(array);
+
+rect.enter()
+	.append('rect')
+	.attr('width', function(d) { return myWScale(d); })
+	.attr('height', 10)
+	.attr('fill', function(d) { return myCScale(d); })
+	.attr('y', function(d, i) { return (i + 1) * 50; });
+
+
+	</script>
+</body>
+</html>

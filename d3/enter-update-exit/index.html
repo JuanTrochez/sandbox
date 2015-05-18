@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Hello World!</title>
+	<title>D3 - enter, update, exit</title>
 </head>
 
 <body>
@@ -18,20 +18,19 @@ var svg = d3.select('body').append('svg')
 
 
 function removeCircle() {
-	console.log('remove circle');
-	array.pop();
+	console.log('removing circle');
+	if (array.length != 1) {
+		array.pop();
+	} else {
+		console.log('You can\'t remove the last circle');
+	}
 	console.log(array);
 
 	createCircle();
-
-	var circle = svg.selectAll('circle')
-				.data(array)
-				.exit()
-					.attr('fill', 'green');
 }
 
 function addCircle() {
-	console.log('add circle');
+	console.log('adding circle');
 
 	var val = array.slice(-1)[0] + 5;
 	array.push(val);
@@ -41,15 +40,16 @@ function addCircle() {
 }
 
 function createCircle() {
-	console.log('create circle');
-	var circle = svg.selectAll('circle')
-				.data(array)
-				.enter()
-					.append('circle')
-					.attr('cx', function(d, i) { return (i + 1) * 100; })
-					.attr('cy', 100)
-					.attr('r', function(d) { return d; })
-					.attr('fill', 'red');
+	var circles = svg.selectAll('circle')
+					.data(array);
+	circles.enter()
+		.append('circle')
+		.attr('cx', function(d, i) { return (i + 1) * 100; })
+		.attr('cy', 100)
+		.attr('r', function(d) { return d; })
+		.attr('fill', 'red');
+
+	circles.exit().remove();
 }
 
 createCircle();
