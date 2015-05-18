@@ -6,23 +6,53 @@
 </head>
 
 <body>
+	<button onclick="removeCircle();">remove circle</button><button onclick="addCircle();">add circle</button>
 
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script>
 var array = [5, 10, 15, 20, 25];
 
 var svg = d3.select('body').append('svg')
-			.attr('width', 1000)
-			.attr('height', 300)
+			.attr('width', 1550)
+			.attr('height', 700);
 
-var circle = svg.selectAll('circle')
+
+function removeCircle() {
+	console.log('remove circle');
+	array.pop();
+	console.log(array);
+
+	createCircle();
+
+	var circle = svg.selectAll('circle')
+				.data(array)
+				.exit()
+					.attr('fill', 'green');
+}
+
+function addCircle() {
+	console.log('add circle');
+
+	var val = array.slice(-1)[0] + 5;
+	array.push(val);
+	console.log(array);
+
+	createCircle();
+}
+
+function createCircle() {
+	console.log('create circle');
+	var circle = svg.selectAll('circle')
 				.data(array)
 				.enter()
 					.append('circle')
 					.attr('cx', function(d, i) { return (i + 1) * 100; })
 					.attr('cy', 100)
 					.attr('r', function(d) { return d; })
-					.attr('fill', function(d) { return 'rgb(' + (d * 2) + ', 100, 100)'; });
+					.attr('fill', 'red');
+}
+
+createCircle();
 
 	</script>
 </body>
