@@ -5,7 +5,6 @@
 
 	app.controller('MainCtrl', ['$scope', '$location', function($scope, $location) {
 		$scope.$location = $location;
-		$scope.myCheck = 'not checked';
 		$scope.showMenu = false;
 
 
@@ -18,6 +17,5 @@
 				$scope.showMenu = false;
 			}
 		});
-
 	}]);
 })();

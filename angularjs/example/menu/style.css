@@ -1,0 +1,29 @@
+body {
+	min-width: 100px;
+	margin: 0 auto;
+	font-size: 30px;
+}
+header {
+	height: 70px;
+	background-color: rgb(50, 50, 50);
+}
+
+header button {
+	float: right;
+	height: 70px;
+}
+header span {
+	display: block;
+	color: white;
+	height: 70px;
+	width: 70px;
+	float: left;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style-type: none;
+}

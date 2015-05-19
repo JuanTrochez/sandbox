@@ -7,15 +7,45 @@
 </head>
 
 <body>
-	<button ng-click="$location.search('menuActive', 1)">Active menu</button>
-	<button ng-click="$location.url($location.path());">reset url</button>
-		search = {{ $location.search().menuActive }}<br/>
-		url = {{ $location.url() }}<br/>
-		{{ myCheck }}<br/>
-		
+	<header>
+		<span ng-show="showMenu" ng-click="$location.url($location.path())"> < </span>
+		<button ng-hide="showMenu" ng-click="$location.search('menuActive', 1)">Afficher le menu</button>
+		<button ng-show="showMenu" ng-click="$location.url($location.path())">Cacher le menu</button>
+	</header>
+
+
 	<nav ng-show="showMenu">
-		Le menu apparait
+		<ul>
+			<li>		
+				<fieldset>
+					<legend>Parametres</legend>
+					Langue : 
+					<select nane="langue">
+						<option value="1">Fr</option>
+						<option value="2">En</option>
+						<option value="3">Es</option>
+						<option value="4">Jp</option>
+						<option value="5">Ru</option>
+					</select>
+				</fieldset>
+			</li>
+			<li>
+				<fieldset>
+					<legend>Profil</legend>
+					<a href="">Connexion / voir le profil</a><br/>
+					<a href="">Pages consultées</a>
+				</fieldset>
+			</li>
+			<li>
+				<fieldset>
+					<legend>Autre</legend>
+				</fieldset>
+			</li>
+		</ul>
 	</nav>
+	<article ng-hide="showMenu">
+		Si le menu n'est pas actif, ce texte apparait.
+	</article>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
 	<script src="app.js"></script>
