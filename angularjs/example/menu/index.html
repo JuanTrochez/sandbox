@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" ng-controller="MainCtrl">
+<head>
+	<meta charset="utf-8" />
+	<title>Menu</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<button ng-click="$location.search('menuActive', 1)">Active menu</button>
+	<button ng-click="$location.url($location.path());">reset url</button>
+		search = {{ $location.search().menuActive }}<br/>
+		url = {{ $location.url() }}<br/>
+		{{ myCheck }}<br/>
+		
+	<nav ng-show="showMenu">
+		Le menu apparait
+	</nav>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
