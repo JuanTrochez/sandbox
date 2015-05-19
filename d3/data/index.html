@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>D3 - External data</title>
+</head>
+
+<body>
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script>
+
+d3.json('data.json', function(d) {
+	var p = d3.select('body').append('p');
+	p.selectAll('span').data(d)
+		.enter()
+		.append('span')
+		.text(function(d) { return d.name + ': ' + d.url; })
+		.append('br');
+});
+
+	</script>
+</body>
+</html>
