@@ -6,6 +6,7 @@
 </head>
 
 <body>
+	<button onclick"play();">Rejouer</button>
 
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script>
@@ -14,7 +15,8 @@ var array = [10, 20, 30];
 
 var svg = d3.select('body').append('svg')
 			.attr('width', 1000)
-			.attr('height', 1000);
+			.attr('height', 1000)
+			.style('float', 'left');
 
 var circles = svg.selectAll('circle').data(array)
 				.enter()
@@ -23,31 +25,36 @@ var circles = svg.selectAll('circle').data(array)
 					.attr('cy', 50)
 					.attr('r', 20);
 
-circles.transition()
-	.delay(1000)
-	.duration(1000)
-	.attr('cx', function(d) { return d * 10 + 400; })
-	.attr('cy', 400)
-	.attr('fill', 'blue')
-		.transition()
+function play() {
+	console.log('playing');
+	circles.transition()
+		.delay(1000)
 		.duration(1000)
-		.attr('cx', function(d) { return d * 10 + 50; })
-		.attr('cy', 50)
-		.attr('fill', 'black')
+		.attr('cx', function(d) { return d * 10 + 400; })
+		.attr('cy', 400)
+		.attr('fill', 'blue')
 			.transition()
 			.duration(1000)
-			.attr('cx', function(d) { return d * 10 + 400; })
+			.attr('cx', function(d) { return d * 10 + 50; })
 			.attr('cy', 50)
-			.attr('fill', 'red')
+			.attr('fill', 'black')
 				.transition()
 				.duration(1000)
-				.attr('cx', function(d) { return d * 10 + 50; })
+				.attr('cx', function(d) { return d * 10 + 400; })
 				.attr('cy', 50)
-				.attr('fill', 'black')
-				.attr('fill', 'green')
-	.each('start', function() { d3.select(this).attr('fill', 'grey'); })
-	.each('interrupt', function() { d3.select(this).attr('fill', 'orange'); })
-	.each('end', function() { d3.select(this).attr('fill', 'yellow'); } );
+				.attr('fill', 'red')
+					.transition()
+					.duration(1000)
+					.attr('cx', function(d) { return d * 10 + 50; })
+					.attr('cy', 50)
+					.attr('fill', 'black')
+					.attr('fill', 'green')
+		.each('start', function() { d3.select(this).attr('fill', 'grey'); })
+		.each('interrupt', function() { d3.select(this).attr('fill', 'orange'); })
+		.each('end', function() { d3.select(this).attr('fill', 'yellow'); } );
+}
+
+play();
 
 
 	</script>
