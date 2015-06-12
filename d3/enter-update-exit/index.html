@@ -19,27 +19,29 @@ var svg = d3.select('body').append('svg')
 
 function removeCircle() {
 	console.log('removing circle');
-	if (array.length != 1) {
-		array.pop();
-	} else {
-		console.log('You can\'t remove the last circle');
+	if (array.length == 0) {
+		console.log('No circle anymore');
+		return;
 	}
+	array.pop();
 	console.log(array);
 
-	createCircle();
+	refresh();
 }
 
 function addCircle() {
 	console.log('adding circle');
-
-	var val = array.slice(-1)[0] + 5;
+	var val = 5;
+	if (array.length > 0) {
+		val = array.slice(-1)[0] + 5;
+	}
 	array.push(val);
 	console.log(array);
 
-	createCircle();
+	refresh();
 }
 
-function createCircle() {
+function refresh() {
 	var circles = svg.selectAll('circle')
 					.data(array);
 	circles.enter()
@@ -49,10 +51,19 @@ function createCircle() {
 		.attr('r', function(d) { return d; })
 		.attr('fill', 'red');
 
+	circles
+		.transition()
+		.duration(5000)
+		.ease('linear')
+		.attr('cx', function(d, i) { return (i + 1) * 100 / (array.length + 1); })
+		.attr('cy', 100)
+		.attr('r', function(d, i) { console.log(arguments); return d / (array.length + 1); })
+		.attr('fill', 'blue');
+
 	circles.exit().remove();
 }
 
-createCircle();
+refresh();
 
 	</script>
 </body>

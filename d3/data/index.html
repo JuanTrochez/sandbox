@@ -11,6 +11,9 @@
 	<script>
 
 d3.json('data.json', function(d) {
+	if (!d) {
+		return;
+	}
 	var p = d3.select('body').append('p');
 	p.selectAll('span').data(d)
 		.enter()
