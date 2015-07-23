@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HelloWorld</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <!-- 
+        Les préférences indiquées en global ne sont pas compatibles avec tous les os 
+        ci dessous sont affichés les attributs compatibles pour android
+    -->
+
+    <!-- Permet de cacher la bar de statut en haut (compatible avec tous les os)  -->
+    <preference name="Fullscreen" value="true" />
+
+    <!-- Définit la couleur de fond de l'appli, support une valeur hexadécimal de 4 octets dont le premier représente l'opacité  -->
+    <preference name="BackgroundColor" value="0xff0000ff"/>
+
+    <!-- Permet de cacher la bar d'aide de formulaire sur le clavier  -->
+    <preference name="HideKeyboardFormAccessoryBar" value="true"/>
+
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+    <!-- balise  -->
+
+
+    <!-- balise permattant de cibler seulement un type de plateforme -->
+    <platform name="android">
+
+        <!-- balise indiquant le temps max avant l'envoi d'une erreure de timeout en ms -->
+        <preference name="LoadUrlTimeoutValue" value="10000"/>
+
+        <!-- ...  -->
+        <preference name="SplashScreen" value="mySplash"/>
+
+        <!-- Temps en ms pendant lequel le splash screen est affiché  -->
+        <preference name="SplashScreenDelay" value="10000"/>
+
+        <!-- Affiche un titre, un message et un spinner pendant le chargement de la première page de l'appli  -->
+        <preference name="LoadingDialog" value="My Title,My Message"/>
+
+        <!-- Pareil que ci dessus mais valable pour toutes les pages  -->
+        <preference name="LoadingPageDialog" value="My Title,My Message"/>
+
+        <!-- Affiche la page dans l'attribut 'value' lorsqu'il y a une erreure dans l'appli au lieu du dialog par defaut  -->
+        <preference name="ErrorUrl" value="myErrorPage.html"/>
+
+        <!-- Affiche le titre de l'application en haut de la page  -->
+        <preference name="ShowTitle" value="true"/>
+        
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

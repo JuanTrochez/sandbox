@@ -12,7 +12,6 @@
 *.lo
 *.lib
 stamp-*
-config.*
 libtool
 ltmain.sh
 .libs
