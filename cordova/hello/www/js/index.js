@@ -26,28 +26,47 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', function() { alert('device ready'); }, false);
+        document.addEventListener('deviceready', this.onDeviceReady(), false);
+    },
+    
+    onDeviceReady: function() {
+        var options = {timeout: 30000};
+
+        console.log('navigator geoloc', navigator.geolocation);
+        var watchId = navigator.geolocation.getCurrentPosition(this.geolocSuccess(), function() {alert('error geolocation');});
+    },
+
+    geolocSuccess: function(position) {
+        console.log(arguments.callee.arguments);
+        console.log('position', position);
+        alert('geolocation');
+        var element = document.getElementById('geolocate');
+
+        element.innerHtml = 'Latitude: '  + position.coords.latitude      + '<br />' +
+                                'Longitude: ' + position.coords.longitude     + '<br />' +
+                                '<hr />'      + element.innerHTML;
     }
 };
 
 var cam = {
     takePicture: function() {
         navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL
-});
+            destinationType: Camera.DestinationType.DATA_URL
+        });
 
-function onSuccess(imageData) {
-    alert('Picture success');
-}
+        function onSuccess(imageData) {
+            alert('Picture success');
+        }
 
-function onFail(message) {
-    alert('Failed because: ' + message);
-}
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
     }
 };
+
+var geoloc = {
+
+};
 document.getElementById("camPic").addEventListener("click", cam.takePicture);
-console.log('cam', cam);
-//console.log('cordova', cordova);
-cam.takePicture();
 
 app.initialize();
