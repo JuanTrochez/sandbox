@@ -28,7 +28,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady(), false);
     },
-    
+
     onDeviceReady: function() {
         var options = {timeout: 30000};
 
@@ -37,7 +37,6 @@ var app = {
     },
 
     geolocSuccess: function(position) {
-        console.log(arguments.callee.arguments);
         console.log('position', position);
         alert('geolocation');
         var element = document.getElementById('geolocate');

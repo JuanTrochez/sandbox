@@ -1,0 +1,19 @@
+<ion-view view-title="Friends">
+	<ion-content class="padding">
+		<ul class="list">
+			<li class="item item-divider" ng-click="vibrate()">
+				Vibrate
+			</li>
+			<li class="item">
+				Battery: {{ battery }}%
+			</li>
+			<li class="item" ng-click="locate()">
+				Locate
+				<div ng-if="lat">
+					lat: {{ lat }}
+					long: {{ long }}
+				</div>
+			</li>
+		</ul>
+	</ion-content>
+</ion-view>
