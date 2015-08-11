@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var custom = require('./custom-route');
 
 var server = app.listen(8080, function() {
 	var host = 'localhost';
@@ -114,3 +115,7 @@ app.route('/method/2')
 	.put(function(req, res) {
 		res.send('Chain PUT');
 	});
+
+
+//using custom router
+app.use('/custom', custom);
