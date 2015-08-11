@@ -62,6 +62,46 @@ app.get('/ab(cd)?ef', function(req, res) {
 });
 
 //regular expression, everything with an 'a'
-app.get(/a/, function(req, res) {
-  res.send('/a/');
+app.get(/xvf/, function(req, res) {
+  res.send('/xvf/');
+});
+
+
+//routes callbacks functions
+//single callback
+app.get('/callbacks', function(req, res) {
+	res.send('Single callback');
+});
+
+//two callbacks
+app.get('/callbacks/2', function(req, res, next) {
+	console.log('Logging from first callback');
+	next();
+}, function(req, res) {
+	res.send('Result from second callback, check the console for the first callback');
+});
+
+//array of callbacks
+var one = function(req, res, next) {
+	console.log('First');
+	next();
+}
+
+var two = function(req, res, next) {
+	console.log('Second');
+	next();
+}
+
+var three = function(req, res) {
+	res.send('Result from third callback (array), check the console!');
+}
+
+app.get('/callbacks/array', [one, two, three]);
+
+//callbacks + array
+app.get('/callbacks/mix', [one, two], function(req, res, next) {
+	console.log('Independent function one');
+	next();
+}, function(req, res) {
+	res.send('Final result, Check the console!');
 });
