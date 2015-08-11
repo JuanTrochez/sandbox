@@ -10,22 +10,18 @@ var server = app.listen(8080, function() {
 
 //routes methods
 app.get('/method', function(req, res) {
-	res.send('Hello! You are at the methods page');
 	res.send('Get request');
 });
 
 app.post('/method', function(req, res) {
-	res.send('Hello! You are at the methods page');
 	res.send('Post request');
 });
 
 app.put('/method', function(req, res) {
-	res.send('Hello! You are at the methods page');
 	res.send('Put request');
 });
 
 app.delete('/method', function(req, res) {
-	res.send('Hello! You are at the methods page');
 	res.send('Delete request');
 });
 
@@ -105,3 +101,16 @@ app.get('/callbacks/mix', [one, two], function(req, res, next) {
 }, function(req, res) {
 	res.send('Final result, Check the console!');
 });
+
+
+//chainable route
+app.route('/method/2')
+	.get(function(req, res) {
+		res.send('Chain GET');
+	})
+	.post(function(req, res) {
+		res.send('Chain POST');
+	})
+	.put(function(req, res) {
+		res.send('Chain PUT');
+	});
