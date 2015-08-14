@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+	p List of users:
+	ul
+		each user in users
+			li 
+				a(href="users/message/" + user.id) Send a message to
+				span  #{user.name} #{user.firstname} 
+

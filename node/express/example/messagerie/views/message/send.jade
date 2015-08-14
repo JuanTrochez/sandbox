@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+	a(href="/users") Back to users
+	p Send a message
+	form(method="POST" action="/users/message")
+		select(name="user")
+			each data in user
+				each users in listUser
+					if users.id == data.id
+						option(value=users.id, selected="selected") #{users.firstname}
+					else
+						option(value=users.id) #{users.firstname}
+	p
+		input(type="text", name="object")
+	p
+		textarea(name="message")
+	p
+		button(type="submit", disabled) Send
