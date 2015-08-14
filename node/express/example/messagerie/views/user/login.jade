@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+	form(action="/login", method="POST")
+		span Username:
+		input(type="text", name="username")
+		br
+		span Password:
+		input(type="password", name="password")
+		br
+		button(type="submit") Log
+

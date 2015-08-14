@@ -7,10 +7,12 @@ block content
 		select(name="user")
 			each data in user
 				each users in listUser
-					if users.id == data.id
-						option(value=users.id, selected="selected") #{users.firstname}
-					else
-						option(value=users.id) #{users.firstname}
+					each current in currentUser
+						if current.id != users.id
+							if users.id == data.id
+								option(value=users.id, selected="selected") #{users.firstname}
+							else
+								option(value=users.id) #{users.firstname}
 	p
 		input(type="text", name="object")
 	p

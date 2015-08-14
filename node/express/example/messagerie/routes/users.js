@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	connection.query('SELECT * FROM user', function(err, rows, field) {
-		console.log('rows', rows);
+		//console.log('rows', rows);
 		res.render('user/index', {users: rows});
 	});
 });
@@ -43,9 +43,16 @@ router.get('/message/:id', function(req, res) {
 				console.log('list user send', rows);
 				callback(null, rows);	
 			});
+		},
+		currentUser: function(callback) {
+			var userQuery = 'SELECT * FROM user where id = ' + req.session.user[0].id;
+			connection.query(userQuery, function(err, rows, field) {
+				console.log('currentUser', rows);
+				callback(null, rows);	
+			});
 		}
 	}, function(err, results) {
-		res.render('message/send', {user: results.user, listUser: results.listUser});
+		res.render('message/send', {user: results.user, listUser: results.listUser, currentUser: results.currentUser});
 	});
 });
 
