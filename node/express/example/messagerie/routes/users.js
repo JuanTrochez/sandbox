@@ -10,6 +10,15 @@ var connection = mysql.createConnection({
 	database : 'messagerie'
 });
 
+function isLogged(req, res, next) {
+	console.log('cookie session user !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', req.session.user);
+	if (req.session.user) {
+		next();
+	} else {
+		res.redirect('/authentication');
+	}
+}
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	connection.query('SELECT * FROM user', function(err, rows, field) {
@@ -28,7 +37,7 @@ router.post('/login', function(req, res) {
 	res.send('login page');
 });
 
-router.get('/message/:id', function(req, res) {
+router.get('/message/:id', isLogged, function(req, res) {
 	async.parallel({
 		user: function(callback) {
 			var userQuery = 'SELECT * FROM user where id = ' + req.params.id;
@@ -56,7 +65,7 @@ router.get('/message/:id', function(req, res) {
 	});
 });
 
-router.post('/message', function(req, res) {
+router.post('/message', isLogged, function(req, res) {
 	res.send('login page');
 });
 
