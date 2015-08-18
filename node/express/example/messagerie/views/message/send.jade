@@ -2,8 +2,9 @@ extends ../layout
 
 block content
 	a(href="/users") Back to users
+
 	p Send a message
-	form(method="POST" action="/users/message")
+	form(method="POST" action="/message/send")
 		select(name="user")
 			each data in user
 				each users in listUser
@@ -13,9 +14,16 @@ block content
 								option(value=users.id, selected="selected") #{users.firstname}
 							else
 								option(value=users.id) #{users.firstname}
+		p
+			input(type="text", name="object" value=post.object)
+		p
+			textarea(name="content") #{post.content}
+		p
+			button(type="submit") Send
+
+	if (messages.info)
+		span= messages.info[0]
+
+
 	p
-		input(type="text", name="object")
-	p
-		textarea(name="message")
-	p
-		button(type="submit", disabled) Send
+		a(href="/logout") logout

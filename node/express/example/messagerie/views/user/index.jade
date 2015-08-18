@@ -1,10 +1,16 @@
 extends ../layout
 
 block content
+	p
+		a(href="/message/view") My messages
 	p List of users:
 	ul
 		each user in users
-			li 
-				a(href="/users/message/" + user.id) Send a message to
-				span  #{user.name} #{user.firstname} 
+			li
+				a(href="/message/send/" + user.id) Send a message to
+				span  #{user.name} #{user.firstname}
+
+
+	p
+		a(href="/logout") logout
 
