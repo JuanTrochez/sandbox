@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+	a(href="/users") Back to users
+
+	table
+		tr
+			th(colspan="3") Inbox
+		tr
+			td From
+			td Object
+			td Action
+		each message in receive
+			tr
+				td #{message.first} #{message.last}
+				td= message.object
+				td
+					a(href="view/" + message.id) View
+
+	table
+		tr
+			th(colspan="3") Outbox
+		tr
+			td To
+			td Object
+			td Action
+		each message in send
+			tr
+				td #{message.first} #{message.last}
+				td= message.object
+				td
+					a(href="view/" + message.id) View
+
+	p
+		a(href="/logout") logout

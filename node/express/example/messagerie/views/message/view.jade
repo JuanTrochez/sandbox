@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+	a(href="/message/view") Back to messages
+
+	for data in message
+		h3= data.object
+		p= data.content
+
+	p
+		a(href="/logout") logout

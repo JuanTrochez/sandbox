@@ -65,12 +65,12 @@ var insertPerson = function(db, callback) {
 	});
 };
 
-// comment to avoid duplications
-// MongoClient.connect(url, function(err, db) {
-// 	insertPerson(db, function() {
-// 		db.close();
-// 	});
-// });
+//comment to avoid duplications
+MongoClient.connect(url, function(err, db) {
+	insertPerson(db, function() {
+		db.close();
+	});
+});
 
 
 // UPDATE SECTION
@@ -89,12 +89,6 @@ var updatePerson = function(db, callback) {
 	console.log('Updating Loic');
 };
 
-// MongoClient.connect(url, function(err, db) {
-// 	updatePerson(db, function() {
-// 		db.close();
-// 	});
-// });
-
 // Update many
 var updateMany = function(db, callback) {
 	var persons = db.collection('person').updateMany(
@@ -109,12 +103,6 @@ var updateMany = function(db, callback) {
 
 	console.log('Updating all lastnamed Richon to Tarin');
 };
-
-// MongoClient.connect(url, function(err, db) {
-// 	updateMany(db, function() {
-// 		db.close();
-// 	});
-// });
 
 // Replace document
 var replaceDoc = function(db, callback) {
@@ -134,7 +122,16 @@ var replaceDoc = function(db, callback) {
 };
 
 MongoClient.connect(url, function(err, db) {
+	updatePerson(db, function() {
+		console.log('update one');
+	});
+
+	updateMany(db, function() {
+		console.log('update many');
+	});
+
 	replaceDoc(db, function() {
+		console.log('replaceDoc');
 		db.close();
 	});
 });
@@ -232,9 +229,60 @@ MongoClient.connect(url, function(err, db) {
 
 	findSorting(db, function() {
 		console.log('--------------------------------');
+		db.close();
 	});
 });
 
+
+// DELETE SECTION
+// delete one
+var deleteOne = function(db, callback) {
+	db.collection('restaurants').deleteOne(
+		{ "firstname": "Loic" },
+		function(err, results) {
+			//console.log(results);
+			callback();
+		}
+	);
+};
+
+var deleteMany = function(db, callback) {
+	db.collection('restaurants').deleteMany(
+		{ "age": { $lt: 20 } },
+		function(err, results) {
+			// console.log(results);
+			callback();
+		}
+	);
+};
+
+var deleteAll = function(db, callback) {
+	db.collection('restaurants').deleteMany({},
+		function(err, results) {
+			// console.log(results);
+			callback();
+		}
+	);
+};
+
+MongoClient.connect(url, function(err, db) {
+	console.log('Delete section');
+	deleteOne(db, function() {
+		console.log('deleting one');
+	});
+
+	deleteMany(db, function() {
+		console.log('deleting many');
+	});
+
+	findPersons(db, function() {
+		console.log('--------------------------------');
+	});
+
+	findSorting(db, function() {
+		console.log('--------------------------------');
+	});
+});
 
 app.get('/', function (req, res) {
 	res.send('Test mongodb, check the console');
