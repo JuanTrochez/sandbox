@@ -2,4 +2,10 @@ extends layout
 
 block content
 	h1= title
-	p Welcome 
+	p 
+		Welcome
+		button(ng-click="retrieveTodoList()") Retrieve data
+		ul
+			li(ng-repeat="todo in todoList")
+				span 
+					{{todo.name}}
