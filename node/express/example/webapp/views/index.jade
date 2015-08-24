@@ -2,10 +2,12 @@ extends layout
 
 block content
 	h1= title
-	p 
+	p
 		Welcome
 		button(ng-click="retrieveTodoList()") Retrieve data
+		input(type="text" ng-model="formTodo")
+		button(ng-click="addTodo()") Add todo
 		ul
 			li(ng-repeat="todo in todoList")
-				span 
+				span
 					{{todo.name}}

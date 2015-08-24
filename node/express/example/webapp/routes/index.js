@@ -44,7 +44,6 @@ router.get('/', function(req, res, next) {
 
 // Retrieve data from db
 router.get('/todo/get', function(req, res, next) {
-	var result = 
 
 	MongoClient.connect(url, function(err, db) {
 		if (err) {
@@ -56,6 +55,25 @@ router.get('/todo/get', function(req, res, next) {
 			res.json(docs);
 		});
 	});
+
+});
+
+// Retrieve data from db
+router.post('/todo/post', function(req, res, next) {
+
+	console.log('req.body', req.body);
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('error', err);
+			return;
+		}
+
+		db.collection('todo').insert({name: req.body.todo});
+
+	});
+
+	res.send('todo added!');
 
 });
 
