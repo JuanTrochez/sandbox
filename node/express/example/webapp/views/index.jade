@@ -4,11 +4,12 @@ block content
 	h1= title
 	p
 		Welcome
-		button(ng-click="retrieveTodoList()") Retrieve data
-		input(type="text" ng-model="formTodo")
-		button(ng-click="addTodo()") Add todo
+		button(ng-click="retrieveTodoList()" class="margin") Retrieve data
+		input(type="text" ng-model="formTodo" placeholder="New Todo")
+		button(ng-click="addTodo()" class="margin") Add todo
+		input(type="search" ng-model="searchTodo" placeholder="Search a Todo")
 		ul
-			li(ng-repeat="todo in todoList")
+			li(ng-repeat="todo in todoList | filter:searchTodo")
 				a(ng-click="deleteTodo(todo._id)" href="#") [X]
 				span
 					{{todo.name}}
