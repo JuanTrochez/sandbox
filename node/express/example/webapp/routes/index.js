@@ -17,24 +17,23 @@ MongoClient.connect(url, function(err, db) {
 });
 
 
-// var insertTodo = function(db, callback) {
-// 	db.collection('todo').insertOne({
-// 		"name": "first todo",
-// 		"isActive": 1
-// 	});
-// };
+var insertTodo = function(db, callback) {
+	db.collection('todo').insertOne({
+		"name": "first todo"
+	});
+};
 
-// MongoClient.connect(url, function(err, db) {
-// 	if (err) {
-// 		console.log('error', err);
-// 		return;
-// 	}
+MongoClient.connect(url, function(err, db) {
+	if (err) {
+		console.log('error', err);
+		return;
+	}
 
-// 	insertTodo(db, function() {
-// 		console.log('inserting todo');
-// 		db.close();
-// 	});
-// });
+	insertTodo(db, function() {
+		console.log('inserting todo');
+		db.close();
+	});
+});
 
 
 /* GET home page. */
@@ -71,7 +70,7 @@ router.post('/todo/post', function(req, res, next) {
 			return;
 		}
 
-		db.collection('todo').insert({name: req.body.todo, isActive: 1});
+		db.collection('todo').insert({name: req.body.todo});
 
 	});
 
