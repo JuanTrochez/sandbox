@@ -31,12 +31,25 @@
 				data: { todo: $scope.formTodo }
 			}).success(function() {
 				console.log('todo successfully added');
+				$scope.retrieveTodoList();
 			}).error(function() {
 				console.log('error posting todo');
 			});
+		};
 
+		$scope.deleteTodo = function(id) {
+			console.log('deleting todo', id);
 
-			$scope.retrieveTodoList();
+			$http({
+				url: '/todo/delete',
+				method: 'post',
+				data: { todo: id }
+			}).success(function() {
+				console.log('todo successfully deleted');
+				$scope.retrieveTodoList();
+			}).error(function() {
+				console.log('error deleting todo');
+			});
 		};
 
 

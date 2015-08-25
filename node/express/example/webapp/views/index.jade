@@ -9,5 +9,6 @@ block content
 		button(ng-click="addTodo()") Add todo
 		ul
 			li(ng-repeat="todo in todoList")
+				a(ng-click="deleteTodo(todo._id)" href="#") [X]
 				span
 					{{todo.name}}

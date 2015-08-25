@@ -6,6 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/todo';
 
+
 MongoClient.connect(url, function(err, db) {
 	if (err) {
 		console.log('error', err);
@@ -52,6 +53,7 @@ router.get('/todo/get', function(req, res, next) {
 		}
 
 		db.collection('todo').find().toArray(function(err, docs) {
+			//console.log(docs);
 			res.json(docs);
 		});
 	});
@@ -69,12 +71,33 @@ router.post('/todo/post', function(req, res, next) {
 			return;
 		}
 
-		db.collection('todo').insert({name: req.body.todo});
+		db.collection('todo').insert({name: req.body.todo, isActive: 1});
 
 	});
 
 	res.send('todo added!');
+});
 
+router.post('/todo/delete', function(req, res, next) {
+
+	console.log('req.body.todo', req.body.todo);
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('error', err);
+			return;
+		}
+
+		db.collection('todo').deleteOne(
+			{_id: ObjectId(req.body.todo)},
+			function(err, results) {
+				//console.log('results', results);
+			}
+		);
+
+	});
+
+	res.send('todo deleted!');
 });
 
 module.exports = router;

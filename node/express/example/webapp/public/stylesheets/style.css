@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+li {
+	margin-bottom: 5px;
+}
+span.ng-binding {
+	margin-left: 5px;
+}
+
