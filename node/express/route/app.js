@@ -8,6 +8,8 @@ var server = app.listen(8080, function() {
 	console.log('server listening at http://%s:%s', host, port);
 });
 
+//using custom router
+app.use('/custom', custom);
 
 //routes methods
 app.get('/method', function(req, res) {
@@ -58,7 +60,7 @@ app.get('/ab(cd)?ef', function(req, res) {
   res.send('ab(cd)?ef');
 });
 
-//regular expression, everything with an 'a'
+//regular expression, everything with an 'xvf'
 app.get(/xvf/, function(req, res) {
   res.send('/xvf/');
 });
@@ -90,6 +92,7 @@ var two = function(req, res, next) {
 }
 
 var three = function(req, res) {
+	console.log('Third');
 	res.send('Result from third callback (array), check the console!');
 }
 
@@ -97,9 +100,10 @@ app.get('/callbacks/array', [one, two, three]);
 
 //callbacks + array
 app.get('/callbacks/mix', [one, two], function(req, res, next) {
-	console.log('Independent function one');
+	console.log('Independent callback one');
 	next();
 }, function(req, res) {
+	console.log('Final callback');
 	res.send('Final result, Check the console!');
 });
 
@@ -117,5 +121,4 @@ app.route('/method/2')
 	});
 
 
-//using custom router
-app.use('/custom', custom);
+

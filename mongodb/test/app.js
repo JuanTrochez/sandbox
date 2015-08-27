@@ -6,12 +6,23 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = 'mongodb://localhost:27017/test2';
 
+app.get('/', function (req, res) {
+	res.send('Test mongodb, check the console');
+});
+
+var server = app.listen(8080, function () {
+	var host = 'localhost';
+	var port = server.address().port;
+
+	console.log('Server running at http://%s:%s', host, port);
+});
+
 MongoClient.connect(url, function(err, db) {
 	if (err) {
 		console.log('Mongo error:', err);
 		return;
 	}
-  console.log("Connected correctly to server.");
+  console.log("Connected correctly to database.");
   db.close();
 });
 
@@ -216,19 +227,19 @@ var findSorting = function(db, callback) {
 
 MongoClient.connect(url, function(err, db) {
 	findPersons(db, function() {
-		console.log('--------------------------------');
+		console.log('------------ END FIND ALL SECTION  --------------------');
 	});
 
 	findByName(db, function() {
-		console.log('--------------------------------');
+		console.log('------------ END FIND BY NAME SECION -------------------');
 	});
 
 	findByAge(db, function() {
-		console.log('--------------------------------');
+		console.log('------------ END FIND BY AGE SECTION --------------------');
 	});
 
 	findSorting(db, function() {
-		console.log('--------------------------------');
+		console.log('------------- END FIND AND SORT SECTION -------------------');
 		db.close();
 	});
 });
@@ -237,7 +248,7 @@ MongoClient.connect(url, function(err, db) {
 // DELETE SECTION
 // delete one
 var deleteOne = function(db, callback) {
-	db.collection('restaurants').deleteOne(
+	db.collection('person').deleteOne(
 		{ "firstname": "Loic" },
 		function(err, results) {
 			//console.log(results);
@@ -247,7 +258,7 @@ var deleteOne = function(db, callback) {
 };
 
 var deleteMany = function(db, callback) {
-	db.collection('restaurants').deleteMany(
+	db.collection('person').deleteMany(
 		{ "age": { $lt: 20 } },
 		function(err, results) {
 			// console.log(results);
@@ -257,7 +268,7 @@ var deleteMany = function(db, callback) {
 };
 
 var deleteAll = function(db, callback) {
-	db.collection('restaurants').deleteMany({},
+	db.collection('person').deleteMany({},
 		function(err, results) {
 			// console.log(results);
 			callback();
@@ -268,29 +279,32 @@ var deleteAll = function(db, callback) {
 MongoClient.connect(url, function(err, db) {
 	console.log('Delete section');
 	deleteOne(db, function() {
-		console.log('deleting one');
+		console.log('------------ END DELETE ONE  --------------------');
 	});
 
 	deleteMany(db, function() {
-		console.log('deleting many');
+		console.log('------------ END DELETE MANY  --------------------');
 	});
 
 	findPersons(db, function() {
-		console.log('--------------------------------');
+		console.log('------------ END FIND ALL SECTION  --------------------');
 	});
 
 	findSorting(db, function() {
-		console.log('--------------------------------');
+		console.log('------------- END FIND AND SORT SECTION -------------------');
 	});
 });
 
-app.get('/', function (req, res) {
-	res.send('Test mongodb, check the console');
-});
 
-var server = app.listen(8080, function () {
-	var host = 'localhost';
-	var port = server.address().port;
-
-	console.log('Server running at http://%s:%s', host, port);
-});
+// AGGREGATION SECTION
+var aggregatePersons = function(db, callback) {
+   db.collection('person').aggregate(
+     [
+       { $group: { "_id": "$borough", "count": { $sum: 1 } } }
+     ]
+   ).toArray(function(err, result) {
+     assert.equal(err, null);
+     console.log(result);
+     callback(result);
+   });
+};

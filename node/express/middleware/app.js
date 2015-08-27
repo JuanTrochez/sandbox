@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 
 //choosing middlewares
 app.get('/rooms/', function(req, res) {
-	res.send('Enter "bed" on url');
+	res.send('Go to <a href="/rooms/bed">bed</a> or <a href="/rooms/fdsq">other</a>');
 });
 app.use('/rooms/:room', function(req, res, next) {
 	console.log('Defining route for: ', req.params.room);
