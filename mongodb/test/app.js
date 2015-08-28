@@ -76,12 +76,6 @@ var insertPerson = function(db, callback) {
 	});
 };
 
-//comment to avoid duplications
-MongoClient.connect(url, function(err, db) {
-	insertPerson(db, function() {
-		db.close();
-	});
-});
 
 
 // UPDATE SECTION
@@ -131,22 +125,6 @@ var replaceDoc = function(db, callback) {
 
 	console.log('Replacing document');
 };
-
-MongoClient.connect(url, function(err, db) {
-	updatePerson(db, function() {
-		console.log('update one');
-	});
-
-	updateMany(db, function() {
-		console.log('update many');
-	});
-
-	replaceDoc(db, function() {
-		console.log('replaceDoc');
-		db.close();
-	});
-});
-
 
 
 //FIND SECTION
@@ -225,25 +203,6 @@ var findSorting = function(db, callback) {
 	});
 };
 
-MongoClient.connect(url, function(err, db) {
-	findPersons(db, function() {
-		console.log('------------ END FIND ALL SECTION  --------------------');
-	});
-
-	findByName(db, function() {
-		console.log('------------ END FIND BY NAME SECION -------------------');
-	});
-
-	findByAge(db, function() {
-		console.log('------------ END FIND BY AGE SECTION --------------------');
-	});
-
-	findSorting(db, function() {
-		console.log('------------- END FIND AND SORT SECTION -------------------');
-		db.close();
-	});
-});
-
 
 // DELETE SECTION
 // delete one
@@ -276,25 +235,6 @@ var deleteAll = function(db, callback) {
 	);
 };
 
-MongoClient.connect(url, function(err, db) {
-	console.log('Delete section');
-	deleteOne(db, function() {
-		console.log('------------ END DELETE ONE  --------------------');
-	});
-
-	deleteMany(db, function() {
-		console.log('------------ END DELETE MANY  --------------------');
-	});
-
-	findPersons(db, function() {
-		console.log('------------ END FIND ALL SECTION  --------------------');
-	});
-
-	findSorting(db, function() {
-		console.log('------------- END FIND AND SORT SECTION -------------------');
-	});
-});
-
 
 // AGGREGATION SECTION
 var aggregatePersons = function(db, callback) {
@@ -308,3 +248,57 @@ var aggregatePersons = function(db, callback) {
      callback(result);
    });
 };
+
+
+MongoClient.connect(url, function(err, db) {
+	// // INSERT
+	// insertPerson(db, function() {
+	// 	console.log('correctly inserted');
+	// });
+
+	// UPDATE
+	updatePerson(db, function() {
+		console.log('update one');
+		console.log('------------ UPDATE ONE  --------------------');
+	});
+
+	updateMany(db, function() {
+		console.log('update many');
+		console.log('------------ UPDATE MANY  --------------------');
+	});
+
+	replaceDoc(db, function() {
+		console.log('replaceDoc');
+		console.log('------------ REPLACE DOC  --------------------');
+	});
+
+
+	// DELETE
+	deleteOne(db, function() {
+		console.log('------------ END DELETE ONE  --------------------');
+	});
+
+	deleteMany(db, function() {
+		console.log('------------ END DELETE MANY  --------------------');
+	});
+
+
+	// FIND
+	findPersons(db, function() {
+		console.log('------------ END FIND ALL SECTION  --------------------');
+	});
+
+	findByName(db, function() {
+		console.log('------------ END FIND BY NAME SECION -------------------');
+	});
+
+	findByAge(db, function() {
+		console.log('------------ END FIND BY AGE SECTION --------------------');
+	});
+
+	findSorting(db, function() {
+		console.log('------------- END FIND AND SORT SECTION -------------------');
+	});
+
+});
+

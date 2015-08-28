@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var cookieSession = require('cookie-session');
-var flash = require('connect-flash');
 var session = require('express-session')
 
 var routes = require('./routes/index');
@@ -45,7 +44,6 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }));
-app.use(flash());
 
 app.use('/', routes);
 app.use('/users', users);

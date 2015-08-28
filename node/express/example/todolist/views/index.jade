@@ -3,12 +3,14 @@ html
 		title!= 'Todo List'
 	body
 		p
-			ul 
+			form(action='/todo/add', method='POST')
+				input(type="text" name="todo")
+				button(type="submit") Add
+
+			ul
 				each val in todoList
-					li 
+					li
 						a(href="/todo/delete/" + val) [x]
 						span  #{val}
 
-		form(action='/todo/add', method='POST')
-			input(type="text" name="todo")
-			button(type="submit") Add
+
