@@ -77,6 +77,30 @@ router.post('/todo/post', function(req, res, next) {
 	res.send('todo added!');
 });
 
+// Update data from db
+router.post('/todo/edit', function(req, res, next) {
+
+	console.log('req.body', req.body);
+
+	MongoClient.connect(url, function(err, db) {
+		if (err) {
+			console.log('error', err);
+			return;
+		}
+
+		db.collection('todo').updateOne(
+			{_id: ObjectId(req.body.id)},
+			{
+				$set: {"name": req.body.name}
+			}, function(err, results) {
+				console.log('results', results);
+			});
+
+	});
+
+	res.send('todo edited!');
+});
+
 router.post('/todo/delete', function(req, res, next) {
 
 	console.log('req.body.todo', req.body.todo);

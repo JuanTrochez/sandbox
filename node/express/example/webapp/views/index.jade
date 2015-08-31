@@ -7,9 +7,16 @@ block content
 		button(ng-click="retrieveTodoList()" class="margin") Retrieve data
 		input(type="text" ng-model="formTodo" placeholder="New Todo")
 		button(ng-click="addTodo()" class="margin") Add todo
+		input(ng-model="editMode" type="checkbox" id="editCheck")
+		label(for="editCheck" class="margin") Edit mode
 		input(type="search" ng-model="searchTodo" placeholder="Search a Todo")
 		ul
 			li(ng-repeat="todo in todoList | filter:searchTodo")
-				a(ng-click="deleteTodo(todo._id)" href="#") [X]
-				span
-					{{todo.name}}
+				div(ng-hide="editMode")
+					a(ng-click="deleteTodo(todo._id)" href="#") [X]
+					span
+						{{todo.name}}
+				div(ng-show="editMode")
+					input(type="text" ng-init="editForm.name = todo.name" ng-model="editForm.name")
+					button(ng-click="editTodo(todo._id, editForm.name)") Edit todo
+

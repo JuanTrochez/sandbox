@@ -9,6 +9,7 @@
 
 		$scope.retrieveTodoList = function() {
 			console.log('retrieving data...');
+			console.log('editForm', $scope.editForm);
 
 			$http({
 				url: '/todo/get',
@@ -23,7 +24,6 @@
 
 		$scope.addTodo = function() {
 			console.log('adding a todo...');
-			console.log('form data', $scope.formTodo);
 
 			$http({
 				url: '/todo/post',
@@ -49,6 +49,23 @@
 				$scope.retrieveTodoList();
 			}).error(function() {
 				console.log('error deleting todo');
+			});
+		};
+
+		$scope.editTodo = function(id, value) {
+			console.log('id', id);
+			$http({
+				url: '/todo/edit',
+				method: 'post',
+				data: {
+					id: id,
+					name: value
+				}
+			}).success(function() {
+				console.log('todo successfully edited');
+				$scope.retrieveTodoList();
+			}).error(function() {
+				console.log('error updating todo');
 			});
 		};
 
