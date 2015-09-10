@@ -1,28 +1,14 @@
-var express = require('express');
-var app = express();
-
 // Including mongoDB
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var url = 'mongodb://localhost:27017/test2';
-
-app.get('/', function (req, res) {
-	res.send('Test mongodb, check the console');
-});
-
-var server = app.listen(8080, function () {
-	var host = 'localhost';
-	var port = server.address().port;
-
-	console.log('Server running at http://%s:%s', host, port);
-});
+var url = 'mongodb://localhost:27017/test';
 
 MongoClient.connect(url, function(err, db) {
 	if (err) {
 		console.log('Mongo error:', err);
 		return;
 	}
-	console.log("Connected correctly to database.");
+	console.log("Test connection successfull.");
 	db.close();
 });
 
@@ -86,9 +72,9 @@ var updatePerson = function(db, callback) {
 		{
 			$set: { "firstname": "Rick", "age": 33 },
 			$currentDate: { "lastModified": true }
-		}, function(err, results) {
-			//console.log(results);
-			callback();
+		}, function(err, result) {
+			//console.log(result);
+			callback(result);
 	});
 
 	console.log('Updating Loic');
@@ -118,9 +104,9 @@ var replaceDoc = function(db, callback) {
 			"lastname": "Replaced",
 			"height": 1.75
 
-		}, function(err, results) {
-			//console.log(results);
-			callback();
+		}, function(err, result) {
+			//console.log(result);
+			callback(result);
 	});
 
 	console.log('Replacing document');
@@ -237,61 +223,56 @@ var deleteAll = function(db, callback) {
 
 
 
-//MongoClient.connect(url, function(err, db) {
-////	 // INSERT
-////	 insertPerson(db, function() {
-////	 	console.log('correctly inserted');
-////	 });
-//
-//	// UPDATE
-//	updatePerson(db, function() {
-//		console.log('update one');
-//		console.log('------------ UPDATE ONE  --------------------');
-//	});
-//
-//	updateMany(db, function() {
-//		console.log('update many');
-//		console.log('------------ UPDATE MANY  --------------------');
-//	});
-//
-//	replaceDoc(db, function() {
-//		console.log('replaceDoc');
-//		console.log('------------ REPLACE DOC  --------------------');
-//	});
-//
-//
-//	// DELETE
-//	deleteOne(db, function() {
-//		console.log('------------ END DELETE ONE  --------------------');
-//	});
-//
-//	deleteMany(db, function() {
-//		console.log('------------ END DELETE MANY  --------------------');
-//	});
-//
-//
-//	// FIND
-//	findPersons(db, function() {
-//		console.log('------------ END FIND ALL SECTION  --------------------');
-//	});
-//
-//	findByName(db, function() {
-//		console.log('------------ END FIND BY NAME SECION -------------------');
-//	});
-//
-//	findByAge(db, function() {
-//		console.log('------------ END FIND BY AGE SECTION --------------------');
-//	});
-//
-//	findSorting(db, function() {
-//		console.log('------------- END FIND AND SORT SECTION -------------------');
-//	});
-//
-//});
-
 MongoClient.connect(url, function(err, db) {
+	 // INSERT
+	 insertPerson(db, function() {
+	 	console.log('correctly inserted');
+	 });
+
+	// UPDATE
+	updatePerson(db, function() {
+		console.log('update one');
+		console.log('------------ UPDATE ONE  --------------------');
+	});
+
+	updateMany(db, function() {
+		console.log('update many');
+		console.log('------------ UPDATE MANY  --------------------');
+	});
+
+	replaceDoc(db, function() {
+		console.log('replaceDoc');
+		console.log('------------ REPLACE DOC  --------------------');
+	});
+
+
+	// DELETE
+	deleteOne(db, function() {
+		console.log('------------ END DELETE ONE  --------------------');
+	});
+
+	deleteMany(db, function() {
+		console.log('------------ END DELETE MANY  --------------------');
+	});
+
+
+	// FIND
 	findPersons(db, function() {
 		console.log('------------ END FIND ALL SECTION  --------------------');
 	});
+
+	findByName(db, function() {
+		console.log('------------ END FIND BY NAME SECION -------------------');
+	});
+
+	findByAge(db, function() {
+		console.log('------------ END FIND BY AGE SECTION --------------------');
+	});
+
+	findSorting(db, function() {
+		console.log('------------- END FIND AND SORT SECTION -------------------');
+	});
+
 });
+
 
