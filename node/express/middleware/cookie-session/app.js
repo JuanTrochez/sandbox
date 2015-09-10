@@ -2,14 +2,6 @@ var express = require('express');
 var app = express();
 var cookieSession = require('cookie-session');
 
-
-var server = app.listen(8080, function() {
-	var host = 'localhost';
-	var port = server.address().port;
-	console.log('server listening at http://%s:%s', host, port);
-});
-
-
 var n = 0;
 
 app.use(cookieSession({
@@ -26,5 +18,11 @@ app.use(function (req, res, next) {
 
 app.get('/', function(req, res) {
 	res.send('hello');
+});
+
+var server = app.listen(8080, function() {
+	var host = 'localhost';
+	var port = server.address().port;
+	console.log('server listening at http://%s:%s', host, port);
 });
 
