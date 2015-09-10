@@ -19,4 +19,14 @@ router.post('/method', function(req, res) {
 	res.send('Post method in custom router');
 });
 
+router.delete('/method', function(req, res) {
+	res.send('Delete method in custom router');
+});
+
+router.trace('/method', function(req, res) {
+	res.send('Trace method in custom router');
+});
+
+
+
 module.exports = router;
