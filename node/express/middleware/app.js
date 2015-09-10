@@ -1,12 +1,6 @@
 var express = require('express');
 var app = express();
 
-var server = app.listen(8080, function() {
-	var host = 'localhost';
-	var port = server.address().port;
-	console.log('server listening at http://%s:%s', host, port);
-});
-
 
 // APPLICATION LEVEL MIDDLEWARES
 //using middlewares before sending response
@@ -37,6 +31,9 @@ app.use('/rooms/:room', function(req, res, next) {
 app.get('/rooms/:room', function(req, res, next) {
 	if (req.params.room == 'bed') {
 		next('route');
+	} else if (req.params.room == 'kitchen') {
+		//next(new Error());
+		throw new Error('Don\'t go to the kitchen');
 	} else {
 		next();
 	}
@@ -51,9 +48,16 @@ app.get('/rooms/:room', function(req, res) {
 
 
 // ERROR LEVEL MIDDLEWARES
+app.get('*', function(req, res, next) {
+	var err = new Error();
+	err.status = 404;
+	next(err);
+});
+
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
+	console.log('error');
+	console.error('stack:', err.stack);
+	res.status(500).send('Something broke!');
 });
 
 
@@ -68,4 +72,8 @@ var options = {
 
 app.use('/static', express.static('public', options));
 
-
+var server = app.listen(8080, function() {
+	var host = 'localhost';
+	var port = server.address().port;
+	console.log('server listening at http://%s:%s', host, port);
+});
