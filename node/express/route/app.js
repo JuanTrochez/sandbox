@@ -2,12 +2,6 @@ var express = require('express');
 var app = express();
 var custom = require('./custom-route');
 
-var server = app.listen(8080, function() {
-	var host = 'localhost';
-	var port = server.address().port;
-	console.log('server listening at http://%s:%s', host, port);
-});
-
 //using custom router
 app.use('/custom', custom);
 
@@ -120,5 +114,9 @@ app.route('/method/2')
 		res.send('Chain PUT');
 	});
 
-
+var server = app.listen(8080, function() {
+	var host = 'localhost';
+	var port = server.address().port;
+	console.log('server listening at http://%s:%s', host, port);
+});
 

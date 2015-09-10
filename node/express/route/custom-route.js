@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
 // define an other route
 router.get('/method', function(req, res) {
 	res.send('Get method in custom router');
-})
-.post('/method', function(req, res) {
+});
+router.post('/method', function(req, res) {
 	res.send('Post method in custom router');
 });
 
