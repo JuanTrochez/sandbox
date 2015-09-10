@@ -22,8 +22,8 @@ MongoClient.connect(url, function(err, db) {
 		console.log('Mongo error:', err);
 		return;
 	}
-  console.log("Connected correctly to database.");
-  db.close();
+	console.log("Connected correctly to database.");
+	db.close();
 });
 
 //INSERT SECTION
@@ -236,69 +236,62 @@ var deleteAll = function(db, callback) {
 };
 
 
-// AGGREGATION SECTION
-var aggregatePersons = function(db, callback) {
-   db.collection('person').aggregate(
-     [
-       { $group: { "_id": "$borough", "count": { $sum: 1 } } }
-     ]
-   ).toArray(function(err, result) {
-     assert.equal(err, null);
-     console.log(result);
-     callback(result);
-   });
-};
 
+//MongoClient.connect(url, function(err, db) {
+////	 // INSERT
+////	 insertPerson(db, function() {
+////	 	console.log('correctly inserted');
+////	 });
+//
+//	// UPDATE
+//	updatePerson(db, function() {
+//		console.log('update one');
+//		console.log('------------ UPDATE ONE  --------------------');
+//	});
+//
+//	updateMany(db, function() {
+//		console.log('update many');
+//		console.log('------------ UPDATE MANY  --------------------');
+//	});
+//
+//	replaceDoc(db, function() {
+//		console.log('replaceDoc');
+//		console.log('------------ REPLACE DOC  --------------------');
+//	});
+//
+//
+//	// DELETE
+//	deleteOne(db, function() {
+//		console.log('------------ END DELETE ONE  --------------------');
+//	});
+//
+//	deleteMany(db, function() {
+//		console.log('------------ END DELETE MANY  --------------------');
+//	});
+//
+//
+//	// FIND
+//	findPersons(db, function() {
+//		console.log('------------ END FIND ALL SECTION  --------------------');
+//	});
+//
+//	findByName(db, function() {
+//		console.log('------------ END FIND BY NAME SECION -------------------');
+//	});
+//
+//	findByAge(db, function() {
+//		console.log('------------ END FIND BY AGE SECTION --------------------');
+//	});
+//
+//	findSorting(db, function() {
+//		console.log('------------- END FIND AND SORT SECTION -------------------');
+//	});
+//
+//});
 
 MongoClient.connect(url, function(err, db) {
-	// // INSERT
-	// insertPerson(db, function() {
-	// 	console.log('correctly inserted');
-	// });
-
-	// UPDATE
-	updatePerson(db, function() {
-		console.log('update one');
-		console.log('------------ UPDATE ONE  --------------------');
-	});
-
-	updateMany(db, function() {
-		console.log('update many');
-		console.log('------------ UPDATE MANY  --------------------');
-	});
-
-	replaceDoc(db, function() {
-		console.log('replaceDoc');
-		console.log('------------ REPLACE DOC  --------------------');
-	});
-
-
-	// DELETE
-	deleteOne(db, function() {
-		console.log('------------ END DELETE ONE  --------------------');
-	});
-
-	deleteMany(db, function() {
-		console.log('------------ END DELETE MANY  --------------------');
-	});
-
-
-	// FIND
 	findPersons(db, function() {
 		console.log('------------ END FIND ALL SECTION  --------------------');
 	});
-
-	findByName(db, function() {
-		console.log('------------ END FIND BY NAME SECION -------------------');
-	});
-
-	findByAge(db, function() {
-		console.log('------------ END FIND BY AGE SECTION --------------------');
-	});
-
-	findSorting(db, function() {
-		console.log('------------- END FIND AND SORT SECTION -------------------');
-	});
-
 });
 

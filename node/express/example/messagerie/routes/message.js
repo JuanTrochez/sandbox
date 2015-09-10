@@ -106,7 +106,7 @@ router.post('/send', isLogged, function(req, res) {
 			listUser: results.listUser,
 			currentUser: results.currentUser,
 			post: post,
-			messages: req.flash()
+			messages: 'hello'
 		});
 	});
 });

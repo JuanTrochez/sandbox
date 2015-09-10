@@ -23,7 +23,10 @@ function isLogged(req, res, next) {
 router.get('/', function(req, res, next) {
 	connection.query('SELECT * FROM user WHERE id != ' + req.session.user[0].id, function(err, rows, field) {
 		//console.log('rows', rows);
-		res.render('user/index', {users: rows});
+		setTimeout(function() {
+			res.render('user/index', {users: rows});
+		}, 5000);
+
 	});
 });
 
