@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 
 
 // APPLICATION LEVEL MIDDLEWARES
@@ -23,6 +24,7 @@ app.get('/', function(req, res) {
 app.get('/rooms/', function(req, res) {
 	res.send('Go to <a href="/rooms/bed">bed</a> or <a href="/rooms/fdsq">other</a>');
 });
+
 app.use('/rooms/:room', function(req, res, next) {
 	console.log('Defining route for: ', req.params.room);
 	next();
@@ -46,21 +48,6 @@ app.get('/rooms/:room', function(req, res) {
 	res.send('You are in the bedroom');
 });
 
-
-// ERROR LEVEL MIDDLEWARES
-app.get('*', function(req, res, next) {
-	var err = new Error();
-	err.status = 404;
-	next(err);
-});
-
-app.use(function(err, req, res, next) {
-	console.log('error');
-	console.error('stack:', err.stack);
-	res.status(500).send('Something broke!');
-});
-
-
 //BUILT IN MIDDLEWARE
 var options = {
 	dotfiles: 'ignore',
@@ -71,6 +58,23 @@ var options = {
 }
 
 app.use('/static', express.static('public', options));
+
+
+// ERROR LEVEL MIDDLEWARES
+app.use(function(req, res, next) {
+	res.sendFile(path.join(__dirname + '/public/404.html'));
+	res.status(404);
+
+});
+
+app.use(function(err, req, res, next) {
+	console.log('error');
+	console.error('stack:', err.stack);
+	res.status(500).send('Something broke!');
+});
+
+
+
 
 var server = app.listen(8080, function() {
 	var host = 'localhost';
